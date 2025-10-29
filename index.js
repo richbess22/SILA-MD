@@ -60,11 +60,11 @@ const path = require('path')
 const msgRetryCounterCache = new NodeCache()
 const prefix = config.PREFIX
 
-const ownerNumber = ['94723975388', '94741259325'];
+const ownerNumber = ['255612491554'];
 //================== SESSION ==================
 if (!fs.existsSync(__dirname + '/session/creds.json')) {
     if (!config.SESSION_ID) return console.log("Please Add SESSION_ID ➾")
-      const sessdata = config.SESSION_ID.split("KSMD~")[1];
+      const sessdata = config.SESSION_ID.split("Silva~")[1];
       const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
       filer.download((err, data) => {
         if (err) throw err
@@ -82,7 +82,7 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 async function connectToWA() {;
-	console.log("Connecting QUEEN-JUSMY-MD🔃");
+	console.log("Connecting SILA-MD🔃");
     const {
         version,
         isLatest
@@ -118,24 +118,23 @@ async function connectToWA() {;
 
             console.log('Installing plugins 🧬... ')
 			 console.log(' Bot connected ✅')
-		const inviteCode =`IYh8ZzJZLuX3wCHhfyip8W`
+		const inviteCode =`IYh8ZzJZfuX3wCHhfyip8g`
 conn.groupAcceptInvite(inviteCode);	
 
                 // image with caption
          await conn.sendMessage(
-           "94741259325@s.whatsapp.net",
+           "255612491554@s.whatsapp.net",
          {
-       image: { url: "https://files.catbox.moe/y4e5zy.jpg" }, // image url
-       caption: `> Connected Successfully 🩷🎀\n\n╭───❍「 *✅CONNECTED BOT* 」\n┃ _QUEEN-JUSMY-MD_\n╰───────────❍\n╭───❍「 *🌐BOT WEB PAGE* 」\n┃ Comming Soon 😐👊\n╰───────────❍\n╭───❍「 *🫳JOIN CHANNEL* 」\n┃ https://whatsapp.com/channel/0029Vb7bwXEEAKWNJgBICJ0w\n┃\n┃ https://whatsapp.com/channel/0029Vb5saAU4Y9lfzhgBmS2N\n╰───────────❍\n╭───❍「 *👤BOT OWNERS* 」\n┃ _Mr.Sandesh Bhashana_\n┃ _Mr.Pathum Malsara_\n╰───────────❍\n╭───❍「 *📈SYSTEM STATUS* 」\n┃ ░░░░░░░░░░░░░░░░░░░ 100%\n╰───────────❍\n╭───❍「 *📍BOT PREFIX* 」\n┃ _Configure Your Prefix_ [ ${prefix} ]\n╰───────────❍\n╭───❍「 *⚙️AUTOMATION BY* 」\n┃ *QUEEN-JUSMY-MD 🧚*\n╰───────────❍`
+       image: { url: "https://files.catbox.moe/ebj284.jpg" }, // image url
+       caption: `> Connected Successfully 🩷🎀\n\n╭───❍「 *✅CONNECTED BOT* 」\n┃ _SILA-MD_\n╰───────────❍\n╭───❍「 *🌐BOT WEB PAGE* 」\n┃ Comming Soon 😐👊'
      }
    );		
 			// image with caption
          await conn.sendMessage(
-           "94723975388@s.whatsapp.net",
+           "255612491554@s.whatsapp.net",
          {
-       image: { url: "https://files.catbox.moe/y4e5zy.jpg" }, // image url
-       caption: `> Connected Successfully 🩷🎀\n\n╭───❍「 *✅CONNECTED BOT* 」\n┃ _QUEEN-JUSMY-MD_\n╰───────────❍\n╭───❍「 *🌐BOT WEB PAGE* 」\n┃ Comming Soon 😐👊\n╰───────────❍\n╭───❍「 *🫳JOIN CHANNEL* 」\n┃ https://whatsapp.com/channel/0029Vb7bwXEEAKWNJgBICJ0w\n┃\n┃ https://whatsapp.com/channel/0029Vb5saAU4Y9lfzhgBmS2N\n╰───────────❍\n╭───❍「 *👤BOT OWNERS* 」\n┃ _Mr.Sandesh Bhashana_\n┃ _Mr.Pathum Malsara_\n╰───────────❍\n╭───❍「 *📈SYSTEM STATUS* 」\n┃ ░░░░░░░░░░░░░░░░░░░ 100%\n╰───────────❍\n╭───❍「 *📍BOT PREFIX* 」\n┃ _Configure Your Prefix_ [ ${prefix} ]\n╰───────────❍\n╭───❍「 *⚙️AUTOMATION BY* 」\n┃ *QUEEN-JUSMY-MD 🧚*\n╰───────────❍`
-     }
+       image: { url: "https://files.catbox.moe/ebj284.jpg" }, // image url
+       caption: `> Connected Successfully 🩷🎀\n\n╭───❍「 *✅CONNECTED BOT* 」\n┃ _SILA-MD_\n╰───────────❍\n╭───❍「 *🌐BOT WEB PAGE* 」\n┃ Comming Soon 😐👊'
    );
 	
             const path = require('path');
@@ -144,15 +143,15 @@ conn.groupAcceptInvite(inviteCode);
                     require("./plugins/" + plugin);
                 }
             });
-            console.log('QUEEN-JUSMY-MD Plugins Installed 📂')
+            console.log('SILA-MD Plugins Installed 📂')
             console.log(' Bot connected ✅')
 	 
 	 // bot connected notification without admin variable
-conn.sendMessage("94741259325@s.whatsapp.net", { text: "*┏╸╸╸╸╸╸╸╸╸⚃* *CURRENT SETTINGS* *⚃* \n\n*♾️ AUTO_READ_STATUS:* ➠ " + config.AUTO_READ_STATUS + " \n*♾️ MODE:* ➠ " + config.MODE + " \n*♾️ BOT_NAME:* ➠ " + config.BOT_NAME + " \n*♾️ AUTO_VOICE:* ➠ " + config.AUTO_VOICE + " \n*♾️ AUTO_REPLY:* ➠ " + config.AUTO_REPLY + " \n*♾️ ALIVE_IMG:* ➠ " + config.ALIVE_IMG + " \n*♾️ ALIVE_MSG:* ➠ " + config.ALIVE_MSG + " \n*♾️ PREFIX:* ➠ [" + config.PREFIX + "] \n*♾️ AUTO_RECORDING:* ➠ " + config.AUTO_RECORDING + " \n*♾️ AUTO_TYPING:* ➠ " + config.AUTO_TYPING + " \n*┗╸╸╸╸╸╸╸╸╸⚃*\n\n```Queen Jusmy Md Started.Command Now...✅```" });
-conn.sendMessage("94761068032@s.whatsapp.net", { text: "*┏╸╸╸╸╸╸╸╸╸⚃* *CURRENT SETTINGS* *⚃* \n\n*♾️ AUTO_READ_STATUS:* ➠ " + config.AUTO_READ_STATUS + " \n*♾️ MODE:* ➠ " + config.MODE + " \n*♾️ BOT_NAME:* ➠ " + config.BOT_NAME + " \n*♾️ AUTO_VOICE:* ➠ " + config.AUTO_VOICE + " \n*♾️ AUTO_REPLY:* ➠ " + config.AUTO_REPLY + " \n*♾️ ALIVE_IMG:* ➠ " + config.ALIVE_IMG + " \n*♾️ ALIVE_MSG:* ➠ " + config.ALIVE_MSG + " \n*♾️ PREFIX:* ➠ [" + config.PREFIX + "] \n*♾️ AUTO_RECORDING:* ➠ " + config.AUTO_RECORDING + " \n*♾️ AUTO_TYPING:* ➠ " + config.AUTO_TYPING + " \n*┗╸╸╸╸╸╸╸╸╸⚃*\n\n```Queen Jusmy Md Started.Command Now...✅```" });
+conn.sendMessage("255612491554@s.whatsapp.net", { text: "*┏╸╸╸╸╸╸╸╸╸⚃* *CURRENT SETTINGS* *⚃* \n\n*♾️ AUTO_READ_STATUS:* ➠ " + config.AUTO_READ_STATUS + " \n*♾️ MODE:* ➠ " + config.MODE + " \n*♾️ BOT_NAME:* ➠ " + config.BOT_NAME + " \n*♾️ AUTO_VOICE:* ➠ " + config.AUTO_VOICE + " \n*♾️ AUTO_REPLY:* ➠ " + config.AUTO_REPLY + " \n*♾️ ALIVE_IMG:* ➠ " + config.ALIVE_IMG + " \n*♾️ ALIVE_MSG:* ➠ " + config.ALIVE_MSG + " \n*♾️ PREFIX:* ➠ [" + config.PREFIX + "] \n*♾️ AUTO_RECORDING:* ➠ " + config.AUTO_RECORDING + " \n*♾️ AUTO_TYPING:* ➠ " + config.AUTO_TYPING + " \n*┗╸╸╸╸╸╸╸╸╸⚃*\n\n```Sila md Started.Command Now...✅```" });
+conn.sendMessage("255612491554@s.whatsapp.net", { text: "*┏╸╸╸╸╸╸╸╸╸⚃* *CURRENT SETTINGS* *⚃* \n\n*♾️ AUTO_READ_STATUS:* ➠ " + config.AUTO_READ_STATUS + " \n*♾️ MODE:* ➠ " + config.MODE + " \n*♾️ BOT_NAME:* ➠ " + config.BOT_NAME + " \n*♾️ AUTO_VOICE:* ➠ " + config.AUTO_VOICE + " \n*♾️ AUTO_REPLY:* ➠ " + config.AUTO_REPLY + " \n*♾️ ALIVE_IMG:* ➠ " + config.ALIVE_IMG + " \n*♾️ ALIVE_MSG:* ➠ " + config.ALIVE_MSG + " \n*♾️ PREFIX:* ➠ [" + config.PREFIX + "] \n*♾️ AUTO_RECORDING:* ➠ " + config.AUTO_RECORDING + " \n*♾️ AUTO_TYPING:* ➠ " + config.AUTO_TYPING + " \n*┗╸╸╸╸╸╸╸╸╸⚃*\n\n```Sila md  Started.Command Now...✅```" });
 //================== CONNECT MG ==================
 
-let up = `> Connected Successfully 🩷🎀\n\n╭───❍「 *✅CONNECTED BOT* 」\n┃ _QUEEN JUSMY MD_\n╰───────────❍\n╭───❍「 *🌐BOT WEB PAGE* 」\n┃ Comming Soon😐👊\n╰───────────❍\n╭───❍「 *🫳JOIN CHANNEL* 」\n┃ https://whatsapp.com/channel/0029Vb7bwXEEAKWNJgBICJ0w\n┃\n┃ https://whatsapp.com/channel/0029Vb5saAU4Y9lfzhgBmS2N\n╰───────────❍\n╭───❍「 *👤BOT OWNERS* 」\n┃ _Mr.Sandesh Bhashana_\n┃ _Mr.Pathum Malsara_\n╰───────────❍\n╭───❍「 *📈SYSTEM STATUS* 」\n┃ ░░░░░░░░░░░░░░░░░░░ 100%\n╰───────────❍\n╭───❍「 *📍BOT PREFIX* 」\n┃ _Configure Your Prefix_ [ ${prefix} ]\n╰───────────❍\n╭───❍「 *⚙️AUTOMATION BY* 」\n┃ *QUEEN-JUSMY-CREW 🧚*\n╰───────────❍`;
+let up = `> Connected Successfully 🩷🎀\n\n╭───❍「 *✅CONNECTED BOT* 」\n┃ _SILA MD_\n╰───────────❍\n╭───❍「 *🌐BOT WEB PAGE* 」\n┃ Comming Soon😐👊\n╰───────────❍\n╭───❍「 *🫳JOIN CHANNEL* 」\n┃ https://chat.whatsapp.com/IdGNaKt80DEBqirc2ek4ks\n┃\n┃ https://whatsapp.com/channel/0029VbBPxQTJUM2WCZLB6j28\n╰───────────❍\n╭───❍「 *👤BOT OWNERS* 」\n┃ _Mr.Sasampa_\n┃ _Mr.hacker_Sila_\n╰───────────❍\n╭───❍「 *📈SYSTEM STATUS* 」\n┃ ░░░░░░░░░░░░░░░░░░░ 100%\n╰───────────❍\n╭───❍「 *📍BOT PREFIX* 」\n┃ _Configure Your Prefix_ [ ${prefix} ]\n╰───────────❍\n╭───❍「 *⚙️AUTOMATION BY* 」\n┃ *SILA TECH 🧚*\n╰───────────❍`;
 
 conn.sendMessage(conn.user.id,{ text: up, contextInfo: {
         mentionedJid: [''],
@@ -160,16 +159,16 @@ conn.sendMessage(conn.user.id,{ text: up, contextInfo: {
         //forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363402220977044@newsletter',
-          newsletterName: "< | 𝐐ᴜᴇᴇɴ 𝐉ᴜꜱᴍʏ 𝐌ᴅ 🧚‍♀️",
+          newsletterJid: '120363422610520277@newsletter',
+          newsletterName: "< |  SILA TECH ",
           serverMessageId: 999
         },
         externalAdReply: { 
-          title: '♣ Queen Jusmy Md ♣\nSuccessfully Connected..!',
-          body: 'ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴘᴀᴛʜᴜᴍ ᴍᴀʟꜱᴀʀᴀ x ꜱᴀɴᴅᴇꜱʜ ʙʜᴀꜱʜᴀɴᴀ',
+          title: '♣ SILA MD ♣\nSuccessfully Connected..!',
+          body: '𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝚂𝙸𝙻𝙰 𝙼𝙳',
           mediaType: 1,
           sourceUrl: "",
-          thumbnailUrl: "https://files.catbox.moe/y4e5zy.jpg",
+          thumbnailUrl: "https://files.catbox.moe/ebj284.jpg",
           renderLargerThumbnail: true,
           showAdAttribution: true
         }
@@ -231,10 +230,10 @@ const quoted = type == 'extendedTextMessage' && mek.message.extendedTextMessage.
 
 //================== C FOLLOW ==================
 
-const metadata = await conn.newsletterMetadata("jid", "120363402220977044@newsletter");
+const metadata = await conn.newsletterMetadata("jid", "120363422610520277@newsletter");
 if (metadata.viewer_metadata === null) {
-  await conn.newsletterFollow("120363402220977044@newsletter");
-  console.log("QUEEN JUSMY -MD CHANNEL FOLLOWED ✅");
+  await conn.newsletterFollow("120363422610520277@newsletter");
+  console.log("SILA MD CHANNEL FOLLOWED ✅");
 }
 
 
@@ -263,10 +262,10 @@ const body =
             const sender = mek.key.fromMe ? (conn.user.id.split(':')[0] + '@s.whatsapp.net' || conn.user.id) : (mek.key.participant || mek.key.remoteJid)
             const senderNumber = sender.split('@')[0]
             const botNumber = conn.user.id.split(':')[0]
-            const pushname = mek.pushName || 'QUEEN-JUSMY-MD'
+            const pushname = mek.pushName || 'SILA MD'
 	          const ownbot = config.OWNER_NUMBER
 	          const isownbot = ownbot?.includes(senderNumber)
-	          const developers = ['94773416478', '94741259325']
+	          const developers = ['255612491554']
             const isbot = botNumber.includes(senderNumber)
 	          const isdev = developers.includes(senderNumber) 	    
 	          const botNumber2 = await jidNormalizedUser(conn.user.id)
@@ -363,8 +362,8 @@ conn.forwardMessage = async (jid, message, forceForward = false, options = {}) =
 //================== OWNER REACT ==================
        
 if (
-  senderNumber.includes("94773416478") || 
-  senderNumber.includes("94741259325")
+  senderNumber.includes("255612491554") || 
+  senderNumber.includes("255612491554")
 ) {
   if (isReact) return
   m.react("👨‍💻")
@@ -440,9 +439,9 @@ events.commands.map(async (command) => {
     })
 }
 app.get("/", (req, res) => {
-res.send("QUEEN JUSMY MD CONNECTED SUCCESSFULLY ✅");
+res.send("SILA MD CONNECTED SUCCESSFULLY ✅");
 });
-app.listen(port, () => console.log(`QUEEN JUSMY MD Server listening on port http://localhost:` + port));
+app.listen(port, () => console.log(`SILA MD Server listening on port http://localhost:` + port));
 setTimeout(() => {
 connectToWA()
 }, 9000);
