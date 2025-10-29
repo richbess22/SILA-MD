@@ -5,13 +5,13 @@ function convertToBool(text, fault = 'true') {
 }
 module.exports = {
 
-SESSION_ID: process.env.SESSION_ID || 'KSMD~GsZgDSBC#XX1wwWVX5eJ7e0tgKiWZ2DWKMJUU4sjoFtqQw1lD7-I',
+SESSION_ID: process.env.SESSION_ID || 'Silva~GsZgDSBC#XX1wwWVX5eJ7e0tgKiWZ2DWKMJUU4sjoFtqQw1lD7-I',
 MONGODB: process.env.MONGODB || "mongodb://mongo:hSKOyytRSHAikyAFUajcmkoJTEcgoBTR@trolley.proxy.rlwy.net:29757",  
 PREFIX: process.env.PREFIX || '.',
-ALIVE_IMG: process.env.ALIVE_IMG || 'https://files.catbox.moe/xu4725.jpg',   
-FOOTER: process.env.FOOTER || '> *©卩ᴏᴡᴇʀᴇᴅ ʙʏ < | 𝐐ᴜᴇᴇɴ 𝐉ᴜꜱᴍʏ 𝐌ᴅ 🧚‍♀️*',
-ALIVE_MSG: process.env.ALIVE_MSG || '👾 Ｗ𝙴𝙻𝙲𝙾𝙼𝙴 𝚃𝙾 < | 𝐐ᴜᴇᴇɴ 𝐉ᴜꜱᴍʏ 𝐌ᴅ 🧚‍♀️',
-BOT_NAME: process.env.BOT_NAME || '< | 𝐐ᴜᴇᴇɴ 𝐉ᴜꜱᴍʏ 𝐌ᴅ 🧚‍♀️',
+ALIVE_IMG: process.env.ALIVE_IMG || 'https://files.catbox.moe/ebj284.jpg',   
+FOOTER: process.env.FOOTER || '> *© < | 𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝚂𝙸𝙻𝙰 𝙼𝙳 🔥*',
+ALIVE_MSG: process.env.ALIVE_MSG || '🔥 Ｗ𝙴𝙻𝙲𝙾𝙼𝙴 𝚃𝙾 < | 𝚂𝙸𝙻𝙰 𝙼𝙳 🔥',
+BOT_NAME: process.env.BOT_NAME || '< | 𝚂𝙸𝙻𝙰 𝙼𝙳 🔥',
 MODE: process.env.MODE === undefined ?"groups" : process.env.MODE,
 BUTTON: process.env.BUTTON || 'true',
 MENTION_REPLY: process.env.MENTION_REPLY || 'true',
@@ -22,7 +22,7 @@ AUTO_BIO: process.env.AUTO_BIO || 'true',
 AUTO_RECORDING: process.env.AUTO_RECORDING || 'false',
 ANTI_DELETE: process.env.ANTI_DELETE || 'true',
 ANTI_DEL_PATH: process.env.ANTI_DEL_PATH || 'inbox', 
-OWNER_NAME: process.env.OWNER_NAME || '_Mr Unknown X Luxalgo_',
-OWNER_NUMBER: process.env.OWNER_NUMBER || ['94723975388','94741259325'],
+OWNER_NAME: process.env.OWNER_NAME || '_Sila Tech_',
+OWNER_NUMBER: process.env.OWNER_NUMBER || ['255612491554'],
 AUTO_READ_STATUS: process.env.AUTO_READ_STATUS === undefined ?"true" : process.env.AUTO_READ_STATUS
 };
