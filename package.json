@@ -1,12 +1,12 @@
 {
-  "name": "NOVA-X-MD",
+  "name": "SILA-MD",
   "version": "1.0.0",
   "description": "A WhatsApp bot created using Node.js",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name NOVA-X-MD",
-    "stop": "pm2 stop NOVA-X-MD",
-    "restart": "pm2 restart NOVA-X-MD",
+    "start": "pm2 start index.js --deep-monitoring --attach --name SILA-MD",
+    "stop": "pm2 stop SILA-MD",
+    "restart": "pm2 restart SILA-MD",
     "engines": {
     "node": "21.x"
     }  
