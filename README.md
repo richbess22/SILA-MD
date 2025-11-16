@@ -208,29 +208,3 @@
 
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=00ffff&height=100&section=footer)
 
-</div>
-
-</div>
-
-<style>
-  h1, h2, h3 {
-    background: linear-gradient(45deg, #00ffff, #0080ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  td, th {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #333;
-  }
-  
-  tr:hover {
-    background: rgba(0, 255, 255, 0.1);
-  }
-</style>
