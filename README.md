@@ -1,4 +1,3 @@
-```markdown
 <h1 align="center">
   <span style="font-size: 3em; background: linear-gradient(45deg, #00ffff, #0080ff, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px #00ffff, 0 0 60px #0080ff;">
     🚀 SILA MD WHISPER 🚀
@@ -11,8 +10,6 @@
 
 <div align="center">
 
-![Hacker Terminal](https://github.com/Sila-Md/SILA-MD/raw/main/assets/hacker-terminal.gif)
-
 <p align="center">
   <span style="color: #00ffff; font-size: 1.2em;">
     🔥 <strong>THE ULTIMATE WHATSAPP EXPERIENCE</strong> 🔥
@@ -21,15 +18,15 @@
 
 <p align="center">
   <em style="color: #cccccc; font-size: 1.1em;">
-    Experience the future of WhatsApp automation with SILA MD - A powerful, feature-rich, and completely customizable multi-device WhatsApp bot designed for modern messaging needs. Built with cutting-edge technology and packed with advanced features.
+    Experience the future of WhatsApp automation with SILA MD - A powerful, feature-rich, and completely customizable multi-device WhatsApp bot designed for modern messaging needs.
   </em>
 </p>
 
 <br>
 
-<p align="center">
-  <img src="https://files.catbox.moe/jwmx1j.jpg" width="200" height="200" style="border-radius:50%;border: 3px solid #00ffff;box-shadow: 0 0 30px #00ffff, 0 0 50px #0080ff;animation: glow 2s ease-in-out infinite alternate;">
-</p>
+<div align="center">
+  <img src="https://files.catbox.moe/jwmx1j.jpg" width="200" height="200" style="border-radius:50%;border: 3px solid #00ffff;box-shadow: 0 0 30px #00ffff, 0 0 50px #0080ff;">
+</div>
 
 <br>
 
@@ -37,122 +34,117 @@
 
 <div align="center">
 
-| 🚀 GET STARTED | 📞 CONTACT | 🔗 CHANNEL |
-|:--------------:|:----------:|:----------:|
-| [![Download ZIP](https://img.shields.io/badge/📥_DOWNLOAD_ZIP-00ffff?style=for-the-badge&logo=zip&logoColor=white)](https://github.com/Sila-Md/SILA-MD/archive/refs/heads/main.zip) | [![Owner](https://img.shields.io/badge/👑_OWNER-255612491554-0080ff?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/255612491554) | [![Channel](https://img.shields.io/badge/📢_OFFICIAL_CHANNEL-0029VbBG4gfISTkCpKxyMH02-00ffff?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029VbBG4gfISTkCpKxyMH02) |
+[![Download ZIP](https://img.shields.io/badge/📥_DOWNLOAD_ZIP-00ffff?style=for-the-badge&logo=zip&logoColor=black)](https://github.com/Sila-Md/SILA-MD/archive/refs/heads/main.zip)
+[![Owner](https://img.shields.io/badge/👑_OWNER-255612491554-0080ff?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/255612491554)
+[![Channel](https://img.shields.io/badge/📢_OFFICIAL_CHANNEL-0029VbBG4gfISTkCpKxyMH02-00ffff?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029VbBG4gfISTkCpKxyMH02)
+[![Fork Repository](https://img.shields.io/badge/🍴_FORK_REPO-0080ff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Sila-Md/SILA-MD/fork)
 
 </div>
 
 <br>
 
-## 🌟 **FEATURES OVERVIEW**
+## 🚀 **DEPLOYMENT**
 
 <div align="center">
 
-```python
-class SILA_MD_Features:
-    🤖 AI_Chatbot = "Advanced GPT-powered conversations"
-    🎵 Media_Downloader = "YouTube, Instagram, TikTok"
-    📊 Group_Manager = "Advanced moderation tools"
-    🎮 Entertainment = "Games, Stickers, Fun commands"
-    🔒 Security = "Anti-spam, Anti-link protection"
-    🛠️ Customizable = "Easy to modify and extend"
-    ⚡ Fast = "Lightning-fast responses"
-    📱 Multi_Device = "Baileys multi-device support"
-```
-
-</div>
-
-<br>
-
-## 🛠️ **DEPLOYMENT METHODS**
-
-<div align="center">
-
-### **🎯 CHOOSE YOUR DEPLOYMENT METHOD**
-
-| Method | Difficulty | Cost | Setup Time |
-|:------:|:----------:|:----:|:----------:|
-| **🖥️ Panel Hosting** | ⭐ | 💰 | 🕒 5min |
-| **☁️ Heroku** | ⭐⭐ | 🆓 | 🕒 10min |
-| **🚀 Render** | ⭐⭐ | 🆓 | 🕒 15min |
-| **📦 Local** | ⭐⭐⭐ | 🆓 | 🕒 20min |
-
-</div>
-
-<br>
-
-## 📥 **QUICK DEPLOY**
-
-<div align="center">
-
-[![Deploy on Panel](https://img.shields.io/badge/🖥️_DEPLOY_ON_PANEL-00ffff?style=for-the-badge&logo=server&logoColor=white)](https://bot-hosting.net/?aff=1436269328306671689)
+[![Deploy on Panel](https://img.shields.io/badge/🖥️_DEPLOY_ON_PANEL-00ffff?style=for-the-badge&logo=server&logoColor=black)](https://bot-hosting.net/?aff=1436269328306671689)
 [![Deploy on Heroku](https://img.shields.io/badge/☁️_DEPLOY_ON_HEROKU-430098?style=for-the-badge&logo=heroku&logoColor=white)](https://heroku.com/deploy)
 [![Deploy on Render](https://img.shields.io/badge/🚀_DEPLOY_ON_RENDER-46a2b1?style=for-the-badge&logo=render&logoColor=white)](https://render.com/deploy)
-[![Local Setup](https://img.shields.io/badge/💻_LOCAL_SETUP-0080ff?style=for-the-badge&logo=windows&logoColor=white)](#local-installation)
+[![KataBump](https://img.shields.io/badge/🔗_KATABUMP-0080ff?style=for-the-badge&logo=link&logoColor=white)](https://dashboard.katabump.com/auth/login#38a45a)
+[![Pair Code](https://img.shields.io/badge/🔐_PAIR_CODE-00ffff?style=for-the-badge&logo=code&logoColor=black)](#)
 
 </div>
 
 <br>
 
-## 📋 **DEPLOYMENT STEPS**
-
-### **🖥️ PANEL HOSTING (RECOMMENDED)**
-```bash
-1. Click "Deploy on Panel" button above
-2. Create account on bot-hosting.net
-3. Upload your project files
-4. Set environment variables
-5. Start your bot!
-```
-
-### **☁️ HEROKU DEPLOYMENT**
-```bash
-1. Fork this repository
-2. Click "Deploy on Heroku" button
-3. Connect your GitHub account
-4. Set config vars
-5. Deploy and enjoy!
-```
-
-### **🚀 RENDER DEPLOYMENT**
-```bash
-1. Fork this repository
-2. Click "Deploy on Render" button
-3. Connect your repository
-4. Add environment variables
-5. Deploy instantly!
-```
-
-<br>
-
-## 🔧 **LOCAL INSTALLATION**
-
-```bash
-# Download the project
-📥 git clone https://github.com/Sila-Md/SILA-MD.git
-📥 cd SILA-MD
-
-# Install dependencies
-📦 npm install
-
-# Configure environment
-⚙️ cp config.example.js config.js
-⚙️ Edit config.js with your settings
-
-# Start the bot
-🚀 npm start
-```
-
-<br>
-
-## 📞 **SUPPORT & LINKS**
+## 🌟 **FEATURES**
 
 <div align="center">
 
-[![Fork Repository](https://img.shields.io/badge/🍴_FORK_REPO-0080ff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Sila-Md/SILA-MD/fork)
-[![KataBump](https://img.shields.io/badge/🔗_KATABUMP-00ffff?style=for-the-badge&logo=link&logoColor=white)](https://dashboard.katabump.com/auth/login#38a45a)
-[![Pair Code](https://img.shields.io/badge/🔐_PAIR_CODE-0080ff?style=for-the-badge&logo=code&logoColor=white)](#pair-code)
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="https://img.icons8.com/fluency/96/000000/robot.png" width="60" height="60"><br>
+      <strong>AI Chatbot</strong><br>
+      <span style="color: #00ffff;">GPT-powered conversations</span>
+    </td>
+    <td align="center" width="33%">
+      <img src="https://img.icons8.com/fluency/96/000000/download.png" width="60" height="60"><br>
+      <strong>Media Downloader</strong><br>
+      <span style="color: #00ffff;">YouTube, Instagram, TikTok</span>
+    </td>
+    <td align="center" width="33%">
+      <img src="https://img.icons8.com/fluency/96/000000/group.png" width="60" height="60"><br>
+      <strong>Group Manager</strong><br>
+      <span style="color: #00ffff;">Advanced moderation tools</span>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="https://img.icons8.com/fluency/96/000000/controller.png" width="60" height="60"><br>
+      <strong>Entertainment</strong><br>
+      <span style="color: #00ffff;">Games & Fun commands</span>
+    </td>
+    <td align="center" width="33%">
+      <img src="https://img.icons8.com/fluency/96/000000/security-checked.png" width="60" height="60"><br>
+      <strong>Security</strong><br>
+      <span style="color: #00ffff;">Anti-spam protection</span>
+    </td>
+    <td align="center" width="33%">
+      <img src="https://img.icons8.com/fluency/96/000000/multiple-devices.png" width="60" height="60"><br>
+      <strong>Multi-Device</strong><br>
+      <span style="color: #00ffff;">Baileys MD support</span>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<br>
+
+## 📊 **TECHNICAL SKILLS**
+
+<div align="center">
+
+| Skill | Level |
+|:------|:-----:|
+| **JavaScript** | ██████████ 100% |
+| **Baileys MD** | ██████████ 100% |
+| **API Integration** | █████████░ 95% |
+| **Security** | ██████████ 98% |
+
+</div>
+
+<br>
+
+## ⚡ **PERFORMANCE METRICS**
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="https://img.icons8.com/fluency/96/000000/rocket.png" width="50" height="50"><br>
+      <strong>Response Time</strong><br>
+      <span style="color: #00ffff;">&lt; 1 Second</span>
+    </td>
+    <td align="center" width="25%">
+      <img src="https://img.icons8.com/fluency/96/000000/uptime.png" width="50" height="50"><br>
+      <strong>Uptime</strong><br>
+      <span style="color: #00ffff;">99.9%</span>
+    </td>
+    <td align="center" width="25%">
+      <img src="https://img.icons8.com/fluency/96/000000/memory.png" width="50" height="50"><br>
+      <strong>Memory Usage</strong><br>
+      <span style="color: #00ffff;">&lt; 100MB</span>
+    </td>
+    <td align="center" width="25%">
+      <img src="https://img.icons8.com/fluency/96/000000/available-updates.png" width="50" height="50"><br>
+      <strong>Stability</strong><br>
+      <span style="color: #00ffff;">24/7 Active</span>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -164,44 +156,35 @@ class SILA_MD_Features:
 # Bot Prefix: . (dot)
 
 .help      # Show all commands
-.menu      # Display main menu
+.menu      # Display main menu  
 .owner     # Contact owner
 .chatbot   # AI chatbot
 .play      # Download music
 .sticker   # Create stickers
+.tagall    # Mention all members
 ```
 
 <br>
 
-## 📊 **TECHNICAL SKILLS**
+## 📋 **DEPLOYMENT STEPS**
 
-<div align="center">
-
-```python
-Programming:    ██████████ 100% JavaScript
-Framework:      ██████████ 100% Baileys MD
-Database:       ██████████ 100% JSON
-API:            ██████████ 100% RESTful
-Security:       ██████████ 100% Encrypted
-Performance:    ██████████ 100% Optimized
+### 🖥️ **Panel Hosting (Recommended)**
+```bash
+1. Click "Deploy on Panel" button
+2. Create account on bot-hosting.net
+3. Upload project files
+4. Set environment variables
+5. Start your bot!
 ```
 
-</div>
-
-<br>
-
-## ⚡ **PERFORMANCE METRICS**
-
-<div align="center">
-
-| Feature | Status | Speed |
-|:--------|:------:|:-----:|
-| **Response Time** | ✅ Online | 🚀 < 1s |
-| **Uptime** | ✅ 99.9% | 🔥 24/7 |
-| **Memory Usage** | ✅ Optimized | 💾 < 100MB |
-| **Multi-Device** | ✅ Supported | 📱 Unlimited |
-
-</div>
+### ☁️ **Heroku Deployment**
+```bash
+1. Fork this repository
+2. Click "Deploy on Heroku" button
+3. Connect GitHub account
+4. Set config vars
+5. Deploy and enjoy!
+```
 
 <br>
 
@@ -219,37 +202,35 @@ Performance:    ██████████ 100% Optimized
 
 **💫 Built with ❤️ by [SILA TECH](https://github.com/Sila-Md) 💫**
 
-![Footer Animation](https://github.com/Sila-Md/SILA-MD/raw/main/assets/footer-wave.gif)
+<br>
+
+<div align="center">
+
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=00ffff&height=100&section=footer)
+
+</div>
 
 </div>
 
 <style>
-@keyframes glow {
-  from { box-shadow: 0 0 20px #00ffff, 0 0 30px #0080ff; }
-  to { box-shadow: 0 0 30px #00ffff, 0 0 50px #0080ff, 0 0 60px #00ffff; }
-}
-
-h1, h2, h3 {
-  background: linear-gradient(45deg, #00ffff, #0080ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-img {
-  border-radius: 10px;
-}
+  h1, h2, h3 {
+    background: linear-gradient(45deg, #00ffff, #0080ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  td, th {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+  }
+  
+  tr:hover {
+    background: rgba(0, 255, 255, 0.1);
+  }
 </style>
-```
-
-**Hiki ni README kikamilifu na:**
-- 🎯 **Kichwa kikubwa cha animated** cha "SILA MD WHISPER"
-- 📝 **Maelezo mafupi** ya hali ya juu
-- 🖼️ **Picha ya kati** yenye mwanga wa bluu
-- 🔘 **Buttons zote** ulizozitaja (Owner, Channel, Fork, Deploy panels)
-- 🛠️ **Vyanzo vya ku-deploy** (Panel, Heroku, Render, Local)
-- 📊 **Grafu za ujuzi** za animated
-- 💫 **Animations** za hacker theme
-- 🎨 **Miraba ya rangi** ya bluu na cyan
-- ⚡ **Taarifa za utendaji**
-
-Ikiwa unahitaji kubadilisha link zozote au kuongeza maelezo zaidi, nipo tayari kukusaidia!
