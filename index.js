@@ -1,5 +1,4 @@
-require('dotenv').config();
-const settings = require('./settings');
+require('./settings')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
 const chalk = require('chalk')
@@ -9,7 +8,7 @@ const axios = require('axios')
 const { handleMessages, handleGroupParticipantUpdate, handleStatus } = require('./main');
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
-const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetch, sleep, reSize } = require('./lib/myfunc')
+const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetch, await, sleep, reSize } = require('./lib/myfunc')
 const {
     default: makeWASocket,
     useMultiFileAuthState,
@@ -27,6 +26,7 @@ const {
     delay
 } = require("@whiskeysockets/baileys")
 const NodeCache = require("node-cache")
+// Using a lightweight persisted store instead of makeInMemoryStore (compat across versions)
 const pino = require("pino")
 const readline = require("readline")
 const { parsePhoneNumber } = require("libphonenumber-js")
@@ -39,6 +39,7 @@ const store = require('./lib/lightweight_store')
 
 // Initialize store
 store.readFromFile()
+const settings = require('./settings')
 setInterval(() => store.writeToFile(), settings.storeWriteInterval || 10000)
 
 // Memory optimization - Force garbage collection if available
@@ -47,16 +48,16 @@ setInterval(() => {
         global.gc()
         console.log('🧹 Garbage collection completed')
     }
-}, 60_000)
+}, 60_000) // every 1 minute
 
 // Memory monitoring - Restart if RAM gets too high
 setInterval(() => {
     const used = process.memoryUsage().rss / 1024 / 1024
     if (used > 400) {
         console.log('⚠️ RAM too high (>400MB), restarting bot...')
-        process.exit(1)
+        process.exit(1) // Panel will auto-restart
     }
-}, 30_000)
+}, 30_000) // check every 30 seconds
 
 let phoneNumber = "255612491554"
 let owner = JSON.parse(fs.readFileSync('./data/owner.json'))
@@ -72,55 +73,18 @@ const question = (text) => {
     if (rl) {
         return new Promise((resolve) => rl.question(text, resolve))
     } else {
+        // In non-interactive environment, use ownerNumber from settings
         return Promise.resolve(settings.ownerNumber || phoneNumber)
     }
 }
 
-//===================SESSION-AUTH============================
-if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
-    if(!process.env.SESSION_ID) {
-        console.log(chalk.red('❌ Please add your session to SESSION_ID environment variable!'));
-        console.log(chalk.yellow('💡 How to fix:'));
-        console.log(chalk.yellow('1. Create a .env file in your project root'));
-        console.log(chalk.yellow('2. Add: SESSION_ID=your_session_id_here'));
-        console.log(chalk.yellow('3. Restart the bot'));
-        process.exit(1);
-    }
-    
-    const sessdata = process.env.SESSION_ID.replace("Silva~", '');
-    
-    console.log(chalk.yellow('📥 Downloading session file...'));
-    axios.get(`https://mega.nz/file/${sessdata}`, {
-        responseType: 'arraybuffer'
-    })
-    .then(response => {
-        fs.writeFile(__dirname + '/sessions/creds.json', response.data, (err) => {
-            if (err) {
-                console.log(chalk.red('❌ Error saving session file:', err.message));
-                return;
-            }
-            console.log(chalk.green("✅ Session downloaded successfully"));
-        });
-    })
-    .catch(error => {
-        console.log(chalk.red('❌ Error downloading session:', error.message));
-        console.log(chalk.yellow('💡 Make sure your SESSION_ID is correct'));
-        
-        fs.writeFileSync(__dirname + '/sessions/creds.json', JSON.stringify({}));
-        console.log(chalk.yellow('📁 Created empty session file, will use pairing code instead'));
-    });
-}
 
-console.log(chalk.green(`🚀 ${global.botname} is starting...`));
-  
-//=============================================
-
-async function startSilaBotInc() {
+async function startXeonBotInc() {
     let { version, isLatest } = await fetchLatestBaileysVersion()
     const { state, saveCreds } = await useMultiFileAuthState(`./session`)
     const msgRetryCounterCache = new NodeCache()
 
-    const SilaBotInc = makeWASocket({
+    const XeonBotInc = makeWASocket({
         version,
         logger: pino({ level: 'silent' }),
         printQRInTerminal: !pairingCode,
@@ -141,40 +105,39 @@ async function startSilaBotInc() {
         defaultQueryTimeoutMs: undefined,
     })
 
-    store.bind(SilaBotInc.ev)
-
-    // Setup channel reactions
-    setupChannelReactions(SilaBotInc);
+    store.bind(XeonBotInc.ev)
 
     // Message handling
-    SilaBotInc.ev.on('messages.upsert', async chatUpdate => {
+    XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
         try {
             const mek = chatUpdate.messages[0]
             if (!mek.message) return
             mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
             if (mek.key && mek.key.remoteJid === 'status@broadcast') {
-                await handleStatus(SilaBotInc, chatUpdate);
+                await handleStatus(XeonBotInc, chatUpdate);
                 return;
             }
-            if (!SilaBotInc.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
+            if (!XeonBotInc.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
             if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
 
-            if (SilaBotInc?.msgRetryCounterCache) {
-                SilaBotInc.msgRetryCounterCache.clear()
+            // Clear message retry cache to prevent memory bloat
+            if (XeonBotInc?.msgRetryCounterCache) {
+                XeonBotInc.msgRetryCounterCache.clear()
             }
 
             try {
-                await handleMessages(SilaBotInc, chatUpdate, true)
+                await handleMessages(XeonBotInc, chatUpdate, true)
             } catch (err) {
                 console.error("Error in handleMessages:", err)
+                // Only try to send error message if we have a valid chatId
                 if (mek.key && mek.key.remoteJid) {
-                    await SilaBotInc.sendMessage(mek.key.remoteJid, {
+                    await XeonBotInc.sendMessage(mek.key.remoteJid, {
                         text: '❌ An error occurred while processing your message.',
                         contextInfo: {
                             forwardingScore: 1,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: settings.newsletterJid,
+                                newsletterJid: '120363402325089913@newsletter',
                                 newsletterName: 'SILA TECH',
                                 serverMessageId: -1
                             }
@@ -187,7 +150,8 @@ async function startSilaBotInc() {
         }
     })
 
-    SilaBotInc.decodeJid = (jid) => {
+    // Add these event handlers for better functionality
+    XeonBotInc.decodeJid = (jid) => {
         if (!jid) return jid
         if (/:\d+@/gi.test(jid)) {
             let decode = jidDecode(jid) || {}
@@ -195,57 +159,59 @@ async function startSilaBotInc() {
         } else return jid
     }
 
-   SilaBotInc.ev.on('contacts.update', update => {
+    XeonBotInc.ev.on('contacts.update', update => {
         for (let contact of update) {
-            let id = SilaBotInc.decodeJid(contact.id)
+            let id = XeonBotInc.decodeJid(contact.id)
             if (store && store.contacts) store.contacts[id] = { id, name: contact.notify }
         }
     })
 
-    SilaBotInc.getName = (jid, withoutContact = false) => {
-        id = SilaBotInc.decodeJid(jid)
-        withoutContact = SilaBotInc.withoutContact || withoutContact
+    XeonBotInc.getName = (jid, withoutContact = false) => {
+        id = XeonBotInc.decodeJid(jid)
+        withoutContact = XeonBotInc.withoutContact || withoutContact
         let v
         if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
             v = store.contacts[id] || {}
-            if (!(v.name || v.subject)) v = SilaBotInc.groupMetadata(id) || {}
+            if (!(v.name || v.subject)) v = XeonBotInc.groupMetadata(id) || {}
             resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
         })
         else v = id === '0@s.whatsapp.net' ? {
             id,
             name: 'WhatsApp'
-        } : id === SilaBotInc.decodeJid(SilaBotInc.user.id) ?
-            SilaBotInc.user :
+        } : id === XeonBotInc.decodeJid(XeonBotInc.user.id) ?
+            XeonBotInc.user :
             (store.contacts[id] || {})
         return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
     }
 
-    SilaBotInc.public = true
+    XeonBotInc.public = true
 
-    SilaBotInc.serializeM = (m) => smsg(SilaBotInc, m, store)
+    XeonBotInc.serializeM = (m) => smsg(XeonBotInc, m, store)
 
     // Handle pairing code
-    if (pairingCode && !SilaBotInc.authState.creds.registered) {
+    if (pairingCode && !XeonBotInc.authState.creds.registered) {
         if (useMobile) throw new Error('Cannot use pairing code with mobile api')
 
         let phoneNumber
         if (!!global.phoneNumber) {
             phoneNumber = global.phoneNumber
         } else {
-            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 255612491554 (without + or spaces) : `)))
+            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFormat: 6281376552730 (without + or spaces) : `)))
         }
 
+        // Clean the phone number - remove any non-digit characters
         phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 
+        // Validate the phone number using awesome-phonenumber
         const pn = require('awesome-phonenumber');
         if (!pn('+' + phoneNumber).isValid()) {
-            console.log(chalk.red('Invalid phone number. Please enter your full international number (e.g., 255612491554 for Tanzania) without + or spaces.'));
+            console.log(chalk.red('Invalid phone number. Please enter your full international number (e.g., 15551234567 for US, 447911123456 for UK, etc.) without + or spaces.'));
             process.exit(1);
         }
 
         setTimeout(async () => {
             try {
-                let code = await SilaBotInc.requestPairingCode(phoneNumber)
+                let code = await XeonBotInc.requestPairingCode(phoneNumber)
                 code = code?.match(/.{1,4}/g)?.join("-") || code
                 console.log(chalk.black(chalk.bgGreen(`Your Pairing Code : `)), chalk.black(chalk.white(code)))
                 console.log(chalk.yellow(`\nPlease enter this code in your WhatsApp app:\n1. Open WhatsApp\n2. Go to Settings > Linked Devices\n3. Tap "Link a Device"\n4. Enter the code shown above`))
@@ -257,32 +223,20 @@ async function startSilaBotInc() {
     }
 
     // Connection handling
-    SilaBotInc.ev.on('connection.update', async (s) => {
+    XeonBotInc.ev.on('connection.update', async (s) => {
         const { connection, lastDisconnect } = s
         if (connection == "open") {
             console.log(chalk.magenta(` `))
-            console.log(chalk.yellow(`🌿Connected to => ` + JSON.stringify(SilaBotInc.user, null, 2)))
+            console.log(chalk.yellow(`🌿Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
 
-            // Set random auto bio
-try {
-    const randomBio = settings.autoBio[Math.floor(Math.random() * settings.autoBio.length)];
-    await SilaBotInc.updateProfileStatus(randomBio);
-    console.log('✅ Auto bio set successfully:', randomBio);
-} catch (error) {
-    console.log('❌ Failed to set auto bio:', error.message);
-}
-
-            // Auto join groups and follow channels
-            await autoJoinGroupsAndChannels(SilaBotInc);
-
-            const botNumber = SilaBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
-            await SilaBotInc.sendMessage(botNumber, {
-                text: `*╭━━━〔 🐢 𝚂𝙸𝙻𝙰 𝙼𝙳 🐢 〕━━━┈⊷*\n*┃🐢│ 𝙱𝙾𝚃 𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙴𝙳 𝚂𝚄𝙲𝙲𝙴𝚂𝚂𝙵𝚄𝙻𝙻𝚈!*\n*┃🐢│ 𝚃𝙸𝙼𝙴 :❯ ${new Date().toLocaleString()}*\n*┃🐢│ 𝚂𝚃𝙰𝚃𝚄𝚂 :❯ 𝙾𝙽𝙻𝙸𝙽𝙴 𝙰𝙽𝙳 𝚁𝙴𝙰𝙳𝚈!*\n*╰━━━━━━━━━━━━━━━┈⊷*`,
+            const botNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
+            await XeonBotInc.sendMessage(botNumber, {
+                text: `*╭━━━〔 🐢 𝙎𝙄𝙇𝘼 𝙈𝘿 🐢 〕━━━┈⊷*\n*┃🐢│ 🤖 𝘽𝙊𝙏 𝘾𝙊𝙉𝙉𝙀𝘾𝙏𝙀𝘿 𝙎𝙐𝘾𝘾𝙀𝙎𝙎𝙁𝙐𝙇𝙇𝙔!*\n*┃🐢│*\n*┃🐢│ ⏰ 𝙏𝙞𝙢𝙚: ${new Date().toLocaleString()}*\n*┃🐢│ ✅ 𝙎𝙩𝙖𝙩𝙪𝙨: 𝙊𝙣𝙡𝙞𝙣𝙚 𝙖𝙣𝙙 𝙍𝙚𝙖𝙙𝙮!*\n*┃🐢│*\n*┃🐢│ ✅ 𝙈𝙖𝙠𝙚 𝙨𝙪𝙧𝙚 𝙩𝙤 𝙟𝙤𝙞𝙣 𝙗𝙚𝙡𝙤𝙬 𝙘𝙝𝙖𝙣𝙣𝙚𝙡*\n*╰━━━━━━━━━━━━━━━┈⊷*\n\n> © 𝙋𝙊𝙒𝙀𝙍𝘿 𝘽𝙔 🐢 𝙎𝙄𝙇𝘼`,
                 contextInfo: {
                     forwardingScore: 1,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterJid: settings.newsletterJid,
+                        newsletterJid: '120363402325089913@newsletter',
                         newsletterName: 'SILA TECH',
                         serverMessageId: -1
                     }
@@ -292,12 +246,11 @@ try {
             await delay(1999)
             console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${global.botname || 'SILA MD'} ]`)}\n\n`))
             console.log(chalk.cyan(`< ================================================== >`))
-            console.log(chalk.magenta(`\n${global.themeemoji || '•'} YT SILATRIX22`))
+            console.log(chalk.magenta(`\n${global.themeemoji || '•'} YT CHANNEL: SILATRIX22`))
             console.log(chalk.magenta(`${global.themeemoji || '•'} GITHUB: Sila-Md`))
             console.log(chalk.magenta(`${global.themeemoji || '•'} WA NUMBER: ${owner}`))
-            console.log(chalk.magenta(`${global.themeemoji || '•'} CREDIT: SILA`))
+            console.log(chalk.magenta(`${global.themeemoji || '•'} CREDIT: Sir SILA`))
             console.log(chalk.green(`${global.themeemoji || '•'} 🤖 Bot Connected Successfully! ✅`))
-            console.log(chalk.blue(`Bot Version: ${settings.version}`))
         }
         if (connection === 'close') {
             const statusCode = lastDisconnect?.error?.output?.statusCode
@@ -306,151 +259,39 @@ try {
                     rmSync('./session', { recursive: true, force: true })
                 } catch { }
                 console.log(chalk.red('Session logged out. Please re-authenticate.'))
-                startSilaBotInc()
+                startXeonBotInc()
             } else {
-                startSilaBotInc()
+                startXeonBotInc()
             }
         }
     })
 
-    // Track recently-notified callers to avoid spamming messages
-    const antiCallNotified = new Set();
+    XeonBotInc.ev.on('creds.update', saveCreds)
 
-    // Anticall handler: block callers when enabled
-    SilaBotInc.ev.on('call', async (calls) => {
-        try {
-            const { readState: readAnticallState } = require('./commands/anticall');
-            const state = readAnticallState();
-            if (!state.enabled) return;
-            for (const call of calls) {
-                const callerJid = call.from || call.peerJid || call.chatId;
-                if (!callerJid) continue;
-                try {
-                    try {
-                        if (typeof SilaBotInc.rejectCall === 'function' && call.id) {
-                            await SilaBotInc.rejectCall(call.id, callerJid);
-                        } else if (typeof SilaBotInc.sendCallOfferAck === 'function' && call.id) {
-                            await SilaBotInc.sendCallOfferAck(call.id, callerJid, 'reject');
-                        }
-                    } catch {}
-
-                    if (!antiCallNotified.has(callerJid)) {
-                        antiCallNotified.add(callerJid);
-                        setTimeout(() => antiCallNotified.delete(callerJid), 60000);
-                        await SilaBotInc.sendMessage(callerJid, { text: '📵 Anticall is enabled. Your call was rejected and you will be blocked.' });
-                    }
-                } catch {}
-                setTimeout(async () => {
-                    try { await SilaBotInc.updateBlockStatus(callerJid, 'block'); } catch {}
-                }, 800);
-            }
-        } catch (e) {
-        }
+    XeonBotInc.ev.on('group-participants.update', async (update) => {
+        await handleGroupParticipantUpdate(XeonBotInc, update);
     });
 
-    SilaBotInc.ev.on('creds.update', saveCreds)
-
-    SilaBotInc.ev.on('group-participants.update', async (update) => {
-        await handleGroupParticipantUpdate(SilaBotInc, update);
-    });
-
-    SilaBotInc.ev.on('messages.upsert', async (m) => {
+    XeonBotInc.ev.on('messages.upsert', async (m) => {
         if (m.messages[0].key && m.messages[0].key.remoteJid === 'status@broadcast') {
-            await handleStatus(SilaBotInc, m);
+            await handleStatus(XeonBotInc, m);
         }
     });
 
-    SilaBotInc.ev.on('status.update', async (status) => {
-        await handleStatus(SilaBotInc, status);
+    XeonBotInc.ev.on('status.update', async (status) => {
+        await handleStatus(XeonBotInc, status);
     });
 
-    SilaBotInc.ev.on('messages.reaction', async (status) => {
-        await handleStatus(SilaBotInc, status);
+    XeonBotInc.ev.on('messages.reaction', async (status) => {
+        await handleStatus(XeonBotInc, status);
     });
 
-    return SilaBotInc
+    return XeonBotInc
 }
 
-// Function to setup channel reactions
-function setupChannelReactions(socket) {
-    socket.ev.on('messages.upsert', async ({ messages }) => {
-        const message = messages[0];
-        if (!message?.key || message.key.remoteJid !== settings.newsletterJid) return;
-
-        try {
-            const emojis = settings.autoReactions.channelReaction;
-            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-            const messageId = message.newsletterServerId;
-
-            if (!messageId) return;
-
-            let retries = 3;
-            while (retries > 0) {
-                try {
-                    await socket.newsletterReactMessage(
-                        settings.newsletterJid,
-                        messageId.toString(),
-                        randomEmoji
-                    );
-                    console.log(`✅ Reacted to channel message ${messageId} with ${randomEmoji}`);
-                    break;
-                } catch (error) {
-                    retries--;
-                    console.warn(`❌ Failed to react to channel message, retries left: ${retries}`, error.message);
-                    if (retries === 0) throw error;
-                    await delay(2000);
-                }
-            }
-        } catch (error) {
-            console.error('❌ Channel reaction error:', error);
-        }
-    });
-}
-
-// Function to auto join groups and channels
-async function autoJoinGroupsAndChannels(socket) {
-    try {
-        const groups = [
-            settings.botUserGroup,
-            settings.silaTechGroup
-        ];
-
-        const channels = [
-            settings.newsletterJid
-        ];
-
-        // Join groups
-        for (const groupLink of groups) {
-            try {
-                const inviteCode = groupLink.match(/chat\.whatsapp\.com\/([a-zA-Z0-9]+)/)?.[1];
-                if (inviteCode) {
-                    await socket.groupAcceptInvite(inviteCode);
-                    console.log(`✅ Joined group: ${groupLink}`);
-                }
-            } catch (error) {
-                console.log(`❌ Failed to join group: ${groupLink}`, error.message);
-            }
-            await delay(2000);
-        }
-
-        // Follow channels
-        for (const channelId of channels) {
-            try {
-                await socket.newsletterFollow(channelId);
-                console.log(`✅ Followed channel: ${channelId}`);
-            } catch (error) {
-                console.log(`❌ Failed to follow channel: ${channelId}`, error.message);
-            }
-            await delay(2000);
-        }
-
-    } catch (error) {
-        console.error('❌ Auto-join setup error:', error);
-    }
-}
 
 // Start the bot with error handling
-startSilaBotInc().catch(error => {
+startXeonBotInc().catch(error => {
     console.error('Fatal error:', error)
     process.exit(1)
 })
