@@ -51,7 +51,7 @@
 [![Deploy on Heroku](https://img.shields.io/badge/☁️_DEPLOY_ON_HEROKU-430098?style=for-the-badge&logo=heroku&logoColor=white)](https://heroku.com/deploy)
 [![Deploy on Render](https://img.shields.io/badge/🚀_DEPLOY_ON_RENDER-46a2b1?style=for-the-badge&logo=render&logoColor=white)](https://render.com/deploy)
 [![KataBump](https://img.shields.io/badge/🔗_KATABUMP-0080ff?style=for-the-badge&logo=link&logoColor=white)](https://dashboard.katabump.com/auth/login#38a45a)
-[![Pair Code](https://img.shields.io/badge/🔐_PAIR_CODE-00ffff?style=for-the-badge&logo=code&logoColor=black)](#)
+[![Pair Code](https://img.shields.io/badge/🔐_PAIR_CODE-00ffff?style=for-the-badge&logo=code&logoColor=black)](https://sila-sessions-site.onrender.com)
 
 </div>
 
