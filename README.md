@@ -63,35 +63,35 @@
 
 <table>
   <tr>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/000000/robot.png" width="60" height="60"><br>
+    <td align="center" width="10%">
+      <img src="https://img.icons8.com/fluency/20/000000/robot.png" width="30" height="30"><br>
       <strong>AI Chatbot</strong><br>
       <span style="color: #00ffff;">GPT-powered conversations</span>
     </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/000000/download.png" width="60" height="60"><br>
+    <td align="center" width="10%">
+      <img src="https://img.icons8.com/fluency/20/000000/download.png" width="30" height="30"><br>
       <strong>Media Downloader</strong><br>
       <span style="color: #00ffff;">YouTube, Instagram, TikTok</span>
     </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/000000/group.png" width="60" height="60"><br>
+    <td align="center" width="10%">
+      <img src="https://img.icons8.com/fluency/20/000000/group.png" width="30" height="30"><br>
       <strong>Group Manager</strong><br>
       <span style="color: #00ffff;">Advanced moderation tools</span>
     </td>
   </tr>
   <tr>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/000000/controller.png" width="60" height="60"><br>
+    <td align="center" width="10%">
+      <img src="https://img.icons8.com/fluency/20/000000/controller.png" width="30" height="30"><br>
       <strong>Entertainment</strong><br>
       <span style="color: #00ffff;">Games & Fun commands</span>
     </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/000000/security-checked.png" width="60" height="60"><br>
+    <td align="center" width="10%">
+      <img src="https://img.icons8.com/fluency/20/000000/security-checked.png" width="30" height="30"><br>
       <strong>Security</strong><br>
       <span style="color: #00ffff;">Anti-spam protection</span>
     </td>
-    <td align="center" width="33%">
-      <img src="https://img.icons8.com/fluency/96/000000/multiple-devices.png" width="60" height="60"><br>
+    <td align="center" width="10%">
+      <img src="https://img.icons8.com/fluency/20/000000/multiple-devices.png" width="30" height="30"><br>
       <strong>Multi-Device</strong><br>
       <span style="color: #00ffff;">Baileys MD support</span>
     </td>
@@ -117,36 +117,6 @@
 
 <br>
 
-## ⚡ **PERFORMANCE METRICS**
-
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center" width="25%">
-      <img src="https://img.icons8.com/fluency/96/000000/rocket.png" width="50" height="50"><br>
-      <strong>Response Time</strong><br>
-      <span style="color: #00ffff;">&lt; 1 Second</span>
-    </td>
-    <td align="center" width="25%">
-      <img src="https://img.icons8.com/fluency/96/000000/uptime.png" width="50" height="50"><br>
-      <strong>Uptime</strong><br>
-      <span style="color: #00ffff;">99.9%</span>
-    </td>
-    <td align="center" width="25%">
-      <img src="https://img.icons8.com/fluency/96/000000/memory.png" width="50" height="50"><br>
-      <strong>Memory Usage</strong><br>
-      <span style="color: #00ffff;">&lt; 100MB</span>
-    </td>
-    <td align="center" width="25%">
-      <img src="https://img.icons8.com/fluency/96/000000/available-updates.png" width="50" height="50"><br>
-      <strong>Stability</strong><br>
-      <span style="color: #00ffff;">24/7 Active</span>
-    </td>
-  </tr>
-</table>
-
-</div>
 
 <br>
 
